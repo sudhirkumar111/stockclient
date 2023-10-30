@@ -45,7 +45,7 @@ useEffect(() => {
   }
 
   return () => clearInterval(intervalId);
-},[stockPrice,selectedStock,updateStockPrice]);
+},[stockPrice,selectedStock]);
 
 
 
