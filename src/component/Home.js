@@ -41,7 +41,7 @@ useEffect(() => {
   let intervalId;
 
   if (selectedStock) {
-    intervalId = setInterval(updateStockPrice, 1000);
+    intervalId = setInterval(updateStockPrice, 100);
   }
 
   return () => clearInterval(intervalId);
