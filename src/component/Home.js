@@ -22,7 +22,7 @@ const Home = () => {
     await api.patch('/update-price',{price:newPrice,stockId});
   };
  
-  useEffect((selectedStock,updateStockPrice) => {
+  useEffect((selectedStock) => {
     const intervalId =  selectedStock && setInterval(updateStockPrice, 1000);
     return () => clearInterval(intervalId);
   }, [stockPrice]);
