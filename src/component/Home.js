@@ -12,20 +12,40 @@ const Home = () => {
     baseURL: 'https://stock-server-99gz.onrender.com/',
   });
 
-  const updateStockPrice = () => {   
-    const randomPrice = Math.floor(Math.random() * 1000); 
-    saveStockPriceToDatabase(randomPrice);
-    setStockPrice(randomPrice);
-  };
+  // const updateStockPrice = () => {   
+  //   const randomPrice = Math.floor(Math.random() * 1000); 
+  //   saveStockPriceToDatabase(randomPrice);
+  //   setStockPrice(randomPrice);
+  // };
 
-  const saveStockPriceToDatabase = async (newPrice) => {
-    await api.patch('/update-price',{price:newPrice,stockId});
-  };
+  // const saveStockPriceToDatabase = async (newPrice) => {
+  //   await api.patch('/update-price',{price:newPrice,stockId});
+  // };
  
-  useEffect((selectedStock) => {
-    const intervalId =  selectedStock && setInterval(updateStockPrice, 1000);
-    return () => clearInterval(intervalId);
-  }, [stockPrice,updateStockPrice]);
+  // useEffect((selectedStock) => {
+  //   const intervalId =  selectedStock && setInterval(updateStockPrice, 1000);
+  //   return () => clearInterval(intervalId);
+  // }, [stockPrice]);
+
+  const updateStockPrice = () => {   
+  const randomPrice = Math.floor(Math.random() * 1000); 
+  saveStockPriceToDatabase(randomPrice);
+  setStockPrice(randomPrice);
+};
+
+const saveStockPriceToDatabase = async (newPrice) => {
+  await api.patch('/update-price', { price: newPrice, stockId });
+};
+
+useEffect(() => {
+  let intervalId;
+
+  if (selectedStock) {
+    intervalId = setInterval(updateStockPrice, 1000);
+  }
+
+  return () => clearInterval(intervalId);
+}, [selectedStock]);
 
 
 
