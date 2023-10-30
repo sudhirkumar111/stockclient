@@ -22,7 +22,7 @@ const Home = () => {
     await api.patch('/update-price',{price:newPrice,stockId});
   };
  
-  useEffect((selectedStock) => {
+  useEffect((selectedStock,updateStockPrice) => {
     const intervalId =  selectedStock && setInterval(updateStockPrice, 1000);
     return () => clearInterval(intervalId);
   }, [stockPrice]);
@@ -41,7 +41,7 @@ const Home = () => {
   const handleChange = (event) => {
     setSelectedStock(event.target.value);
     stockList.find((stock) => {
-          if (event.target.value === stock.name) {setStockPrice(stock.price);setStockId(stock._id)}
+          if (event.target.value === stock.name) {return {setStockPrice(stock.price);setStockId(stock._id)}}
         })
  };
   return (
