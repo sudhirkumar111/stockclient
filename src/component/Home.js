@@ -41,7 +41,7 @@ const Home = () => {
   const handleChange = (event) => {
     setSelectedStock(event.target.value);
     stockList.find((stock) => {
-          if (event.target.value === stock.name) {return {setStockPrice(stock.price);setStockId(stock._id)}}
+          if (event.target.value === stock.name)  {setStockPrice(stock.price);setStockId(stock._id)}
         })
  };
   return (
