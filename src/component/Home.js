@@ -38,12 +38,24 @@ const Home = () => {
     getStock();    
   })
 
+ //  const handleChange = (event) => {
+ //    setSelectedStock(event.target.value);
+ //    stockList.find((stock) => {
+ //          if (event.target.value === stock.name)  {setStockPrice(stock.price);setStockId(stock._id)}
+ //        })
+ // };
   const handleChange = (event) => {
-    setSelectedStock(event.target.value);
-    stockList.find((stock) => {
-          if (event.target.value === stock.name)  {setStockPrice(stock.price);setStockId(stock._id)}
-        })
- };
+  const selectedStockName = event.target.value;
+
+  const selectedStock = stockList.find((stock) => stock.name === selectedStockName);
+
+  if (selectedStock) {
+    setSelectedStock(selectedStockName);
+    setStockPrice(selectedStock.price);
+    setStockId(selectedStock._id);
+  }
+};
+
   return (
     <div className="Home">
 
