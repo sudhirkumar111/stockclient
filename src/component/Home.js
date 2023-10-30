@@ -45,7 +45,7 @@ useEffect(() => {
   }
 
   return () => clearInterval(intervalId);
-}, []);
+});
 
 
 
